@@ -1,0 +1,20 @@
+import sqlite3
+
+def create_db():
+
+    conn = sqlite3.connect('chatbot.db')
+
+    cursor = conn.cursor()
+
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS chats(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_message TEXT,
+        bot_response TEXT
+    )
+    ''')
+
+    conn.commit()
+    conn.close()
+
+create_db()
